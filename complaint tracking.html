@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Track Complaint - SmartReport</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #e6f2f1;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .track-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .track-box {
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 128, 128, 0.15);
+      width: 350px;
+      text-align: center;
+    }
+    h2 {
+      color: #006666;
+      margin-bottom: 25px;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      background: #009999;
+      color: white;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #007777;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<div class="track-container">
+  <div class="track-box">
+    <h2>Track Your Complaint</h2>
+    <input type="text" id="ticketId" placeholder="Enter Ticket ID" />
+    <button onclick="trackComplaint()">Track</button>
+    <div id="result"></div>
+  </div>
+</div>
+
+<script>
+  function trackComplaint() {
+    const ticketId = document.getElementById('ticketId').value;
+    if (!ticketId) {
+      alert("Please enter Ticket ID");
+      return;
+    }
+
+    fetch(`http://localhost:8080/api/complaints/track/${ticketId}`)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("result").innerHTML =
+          `<p>Status: <b>${data.status}</b></p>
+           <p>Category: ${data.category}</p>
+           <p>Description: ${data.description}</p>
+           <p>Location: ${data.location}</p>`;
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById("result").innerText = "Complaint not found.";
+      });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard - SmartReport</title>
+  <style>
+    body {
+      background: #f0fbfb;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .dashboard-container {
+      padding: 40px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #006666;
+      margin-bottom: 30px;
+    }
+
+    table {
+      width: 90%;
+      margin: auto;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,128,128,0.1);
+    }
+
+    th, td {
+      padding: 15px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    th {
+      background: #009999;
+      color: white;
+      text-transform: uppercase;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* popup.css — drop into your project and link it from the page */
+.popup {
+  display: none;               /* JS will set display to "flex" when opening */
+  position: fixed;
+  inset: 0;                    /* shorthand for top:0; right:0; bottom:0; left:0 */
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.65);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* modal inner image styling */
+.popup .popup-content {
+  max-width: 92vw;
+  max-height: 84vh;
+
+  object-fit: contain;         /* keeps aspect ratio */
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+  transition: transform 0.18s ease, opacity 0.18s ease;
+  opacity: 1;
+}
+
+/* close button */
+.popup .close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  z-index: 1001;
+  background: rgba(255,255,255,0.95);
+  color: #222;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 23px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  user-select: none;
+}
+
+/* responsive tweaks for small screens */
+@media (max-width: 520px) {
+  .popup .popup-content {
+    max-width: 96vw;
+    max-height: 78vh;
+    border-radius: 6px;
+  }
+  .popup .close {
+    top: 10px;
+    right: 12px;
+    font-size: 18px;
+    padding: 5px 8px;
+  }
+}
+
+  
+
+  </style>
+</head>
+<body>
+<div class="navbar"></div>
+<div class="dashboard-container">
+  <h2>Admin Complaint Dashboard</h2>
+  <table id="complaintTable">
+    <thead>
+      <tr>
+        <th>Ticket ID</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Location</th>
+        <th>Status</th>
+         <th>Image</th>
+      </tr>
+    </thead>
+    <tbody>
+  
+    </tbody>
+  </table>
+</div>
+
+<!-- for pop ke liye new code -->
+ <div id="image-popup" class="popup">
+  <span class="close">&times;</span>
+  <img class="popup-content" id="popup-img">
+</div>
+
+<script>
+  window.onload = function () {
+    fetch("http://localhost:8080/api/complaints/all")
+      .then(res => res.json())
+      .then(data => {
+        const tbody = document.querySelector("#complaintTable tbody");
+        data.forEach(c => {
+          const row = `
+            <tr>
+              <td>${c.ticketId}</td>
+              <td>${c.category}</td>
+              <td>${c.description}</td>
+              <td>${c.location}</td>
+              <td>${c.status}</td>
+                <td>
+              ${c.imagePath ? `<button class="view-image-btn" data-img-path="http://localhost:8080${c.imagePath}">View</button>` : 'No Image'}
+            </td>     
+            </tr>`; //new data add td bala
+          tbody.innerHTML += row;
+        });
+          attachImagePopupEvents();  //new addd
+      })
+      .catch(err => console.error("Failed to load complaints", err));
+  };
+// ye function add kia
+function attachImagePopupEvents() {
+  const popup = document.getElementById("image-popup");
+  const popupImg = document.getElementById("popup-img");
+  const closeBtn = document.querySelector(".close");
+
+  document.querySelectorAll(".view-image-btn").forEach(button => {
+    button.addEventListener("click", function () {
+      popup.style.display = "block";
+      popupImg.src = this.getAttribute("data-img-path");
+    });
+  });
+
+  closeBtn.addEventListener("click", function () {
+    popup.style.display = "none";
+  });
+
+  window.addEventListener("click", function (event) {
+    if (event.target === popup) {
+      popup.style.display = "none";
+    }
+  });
+}
+
+
+</script>
+
+</body>
+</html>

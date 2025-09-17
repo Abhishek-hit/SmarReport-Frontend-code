@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SmartReport - Reset Password</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f8f9fa, #dce3ea);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box; /* Important for layout */
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      margin-top: 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Reset Password</h2>
+    <form id="resetForm">
+      <input type="email" name="email" placeholder="Enter user's registered email" required>
+      <input type="password" name="newPassword" placeholder="Enter new password" required>
+      <button type="submit">Update Password</button>
+    </form>
+    <a class="back-link" href="adminlogin page.html">← Back to Login</a>
+  </div>
+
+  <script>
+    document.getElementById('resetForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = this.email.value;
+      const newPassword = this.newPassword.value;
+
+      fetch('http://localhost:8080/api/authority/reset-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, newPassword })
+      })
+      .then(response => {
+        // Check if the response was successful (status 200-299)
+        if (response.ok) {
+          return response.json();
+        } else {
+          // If not successful, parse the error message and reject the promise
+          return response.json().then(errorData => Promise.reject(errorData));
+        }
+      })
+      .then(data => {
+        alert(data.message); // Show success message
+        window.location.href = "adminlogin page.html"; // Redirect to login
+      })
+      .catch(error => {
+        console.error(error);
+        // Show the error message from the server (e.g., "Email not registered.")
+        alert('Error: ' + error.message);
+      });
+    });
+  </script>
+
+</body>
+</html>

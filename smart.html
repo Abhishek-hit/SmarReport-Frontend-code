@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartReport - Report Issue</title>
+  <link rel="stylesheet" href="smart.css">
+ 
+</head>
+<body>
+
+  <div class="navbar">
+    <h1>SmartReport</h1>
+    <div>
+      <a href="smart.html">Home</a>
+      <a href="#">View</a>
+      <a href="complaint tracking.html">Complaints</a>
+      <a href="admin\adminlogin page.html" class="login-btn">Admin Login</a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- Complaint Submission Form -->
+    <div class="form-box">
+      <h2>Submit a Civic Issue</h2>
+      <form id="complaintForm" enctype="multipart/form-data">
+
+        <label>Upload Photo</label>
+        <input type="file" id="photo" name="imageFile" accept="image/*" required />
+
+        <label>Issue Description</label>
+        <textarea id="description" name="description" placeholder="e.g. Pothole near station..." required></textarea>
+
+        <label>Location</label>
+        <input type="text" id="location" name="location" readonly required />
+
+        <label>Category</label>
+        <select id="category" name="category">
+          <option value="">-- Auto Detect --</option>
+          <option value="Water Leakage">Water</option>
+          <option value="Waste Management">Waste Management</option>
+          <option value="Accident">Accident</option>
+          <option value="Electricity">Electricity</option>
+          <option value="Road">Road</option>
+        </select>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <!-- Complaint View Panel -->
+    <div class="complaints-box">
+      <h2>Recent Complaints</h2>
+
+     <div id="recentComplaints">
+        <!-- Sample Complaint (These will be dynamically loaded later from DB) -->
+        
+      </div>
+    </div>
+  </div>
+
+  <script src="smart.js">
+
+  </script>
+
+</body>
+</html>

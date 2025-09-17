@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SmartReport - Authority Register</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f8f9fa, #e1ecf4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .register-container {
+      background: rgb(129, 211, 234);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(200, 27, 27, 0.1);
+      width: 400px;
+       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 2px 4px 6px rgba(49, 13, 156, 0.1);
+      
+    }
+    .register-container:hover{
+        background-color: #70c3a9;
+          transform: scale(1.05);
+      /* Add a glowing shadow effect */
+      box-shadow: 0 0 20px rgba(8, 23, 120, 0.6);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      margin-top: 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 2px 4px 6px rgba(49, 13, 156, 0.1);
+    }
+
+    button:hover {
+      background-color: #218838;
+       background-color: #218838;
+          transform: scale(1.05);
+      /* Add a glowing shadow effect */
+      box-shadow: 0 0 20px rgba(8, 23, 120, 0.6);
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="register-container">
+    <h2>Create Authority Account</h2>
+    <form id="registerForm">
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <input type="password" name="password" placeholder="Password" required>
+
+      <select name="department" required>
+        <option value="">Select Department</option>
+        <option value="Water">Water</option>
+        <option value="Electricity">Electricity</option>
+        <option value="Road">Road</option>
+        <option value="Waste">Waste Management</option>
+      </select>
+
+      <button type="submit">Create Account</button>
+    </form>
+
+    <a class="back-link" href="E:\SMART CITY\admin\adminlogin page.html">← Back to Login</a>
+  </div>
+
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = this.name.value;
+      const email = this.email.value;
+      const password = this.password.value;
+      const department = this.department.value;
+
+      const authorityData = {
+        name,
+        email,
+        password,
+        department
+      };
+
+      // API call to backend (you'll set this up)
+      fetch("http://localhost:8080/api/authority/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(authorityData)
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert("Registered successfully! You can now login.");
+        window.location.href = "adminlogin page.html";
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Registration failed.");
+      });
+    });
+  </script>
+
+</body>
+</html>

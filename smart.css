@@ -1,0 +1,188 @@
+ body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #7f7d7d;
+    }
+
+            /* --- Creative Navigation Bar --- */
+        .navbar {
+            background: linear-gradient(90deg, #898886, #556e12,rgb(193, 70, 70)
+            );
+            padding: 0 50px; /* Increased padding for more space */
+            height: 80px; /* Slightly taller navbar */
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            border: 3px solid;
+          
+           
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+      
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 17px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            position: relative;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+        
+        /* --- Underline effect for nav links on hover --- */
+        .navbar a:not(.login-btn)::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #66fcf1;
+            transition: width 0.3s ease;
+        }
+
+        .navbar a:not(.login-btn):hover::after {
+            width: 60%;
+        }
+        
+        .navbar a:not(.login-btn):hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* --- Styling for the Login Button --- */
+        .login-btn {
+            background-color: #1abc9c;
+            border: none;
+            border-radius: 50px; /* Pill shape */
+            font-weight: bold;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .login-btn:hover {
+            background-color: #16a085;
+            transform: translateY(-2px); /* Slight lift on hover */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+        }
+
+/* main container */
+    .container {
+      display: flex;
+      padding: 30px;
+      gap: 40px;
+      justify-content: center;
+      
+    }
+
+    
+
+    .form-box, .complaints-box {
+      background-color: rgb(224, 156, 156);
+      padding: 25px;
+      border-radius: 12px;
+      width: 400px;
+       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 2px 4px 6px rgba(49, 13, 156, 0.1);
+       
+    }
+     .form-box:hover{
+       background-color: #70c3a9;
+          transform: scale(1.05);
+      /* Add a glowing shadow effect */
+      box-shadow: 0 0 20px rgba(8, 23, 120, 0.6);
+    }
+     .complaints-box:hover{
+       background-color: #70c3a9;
+          transform: scale(1.05);
+      /* Add a glowing shadow effect */
+      box-shadow: 0 0 20px rgba(12, 25, 108, 0.6);
+    }
+    
+
+    .form-box h2, .complaints-box h2 {
+      margin-bottom: 20px;
+    }
+
+    input, textarea, select, button {
+      background-color: #eef5f4;
+      width: 390px;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: 2px solid #b11e1e;
+      font-size: 14px;
+
+       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow:L 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    textarea:hover{
+       background-color: #70c3a9;
+          transform: scale(1.05);
+      /* Add a glowing shadow effect */
+      box-shadow: 0 0 20px rgba(12, 25, 108, 0.6);
+    }
+    input:hover{
+      background-color: #70c3a9;
+          transform: scale(1.05);
+      /* Add a glowing shadow effect */
+      box-shadow: 0 0 20px rgba(12, 25, 108, 0.6);
+    }
+    select:hover{
+       background-color: #70c3a9;
+          transform: scale(1.05);
+      /* Add a glowing shadow effect */
+      box-shadow: 0 0 20px rgba(12, 25, 108, 0.6);
+    }
+
+    button {
+      background-color: #0c6c50;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    button:hover {
+      background-color: #70c3a9;
+          transform: scale(1.05);
+      /* Add a glowing shadow effect */
+      box-shadow: 0 0 20px rgba(12, 25, 108, 0.6);
+    }
+
+    .complaint {
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+    }
+
+    .complaint .tag {
+      display: inline-block;
+      background-color: #e0f2f1;
+      color: #00796b;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+
+    .login-btn {
+      background: none;
+      border: 2px solid white;
+      padding: 6px 14px;
+      border-radius: 6px;
+    }
+
+    
