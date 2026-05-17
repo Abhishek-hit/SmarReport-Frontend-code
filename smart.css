@@ -1,188 +1,260 @@
- body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #7f7d7d;
-    }
+/* =========================================
+   SmartReport - 'Bharat' Civic UI Theme
+   Inspired by Cosmic Bharat / Digital India
+   ========================================= */
 
-            /* --- Creative Navigation Bar --- */
-        .navbar {
-            background: linear-gradient(90deg, #898886, #556e12,rgb(193, 70, 70)
-            );
-            padding: 0 50px; /* Increased padding for more space */
-            height: 80px; /* Slightly taller navbar */
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            position: sticky;
-            border: 3px solid;
-          
-           
-        }
+/* --- Global Reset & Typography --- */
+* {
+    box-sizing: border-box;
+}
 
-        .navbar h1 {
-            margin: 0;
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-        }
+body {
+    font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8; /* Soft grayish-blue background for contrast */
+    color: #333;
+}
 
-      
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            font-size: 17px;
-            padding: 10px 20px;
-            border-radius: 8px;
-            position: relative;
-            transition: all 0.3s ease;
-            font-size: 18px;
-        }
-        
-        /* --- Underline effect for nav links on hover --- */
-        .navbar a:not(.login-btn)::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #66fcf1;
-            transition: width 0.3s ease;
-        }
+/* --- Navigation Bar (The "Bharat" Vibe) --- */
+.navbar {
+    background: linear-gradient(90deg, #0a1f44, #14397d); /* Deep Cosmic/Navy Blue */
+    padding: 0 5%;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 4px solid #ff9933; /* Saffron/Orange bottom border */
+}
 
-        .navbar a:not(.login-btn):hover::after {
-            width: 60%;
-        }
-        
-        .navbar a:not(.login-btn):hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
+.navbar h1 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
 
-        /* --- Styling for the Login Button --- */
-        .login-btn {
-            background-color: #1abc9c;
-            border: none;
-            border-radius: 50px; /* Pill shape */
-            font-weight: bold;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
+.navbar div {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
 
-        .login-btn:hover {
-            background-color: #16a085;
-            transform: translateY(-2px); /* Slight lift on hover */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.25);
-        }
+.navbar a {
+    color: #e2e8f0;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
 
-/* main container */
-    .container {
-      display: flex;
-      padding: 30px;
-      gap: 40px;
-      justify-content: center;
-      
-    }
+/* Hover Underline Effect */
+.navbar a:not(.login-btn)::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #ff9933; /* Saffron underline */
+    transition: width 0.3s ease;
+}
 
-    
+.navbar a:not(.login-btn):hover::after {
+    width: 100%;
+}
 
-    .form-box, .complaints-box {
-      background-color: rgb(224, 156, 156);
-      padding: 25px;
-      border-radius: 12px;
-      width: 400px;
-       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 2px 4px 6px rgba(49, 13, 156, 0.1);
-       
-    }
-     .form-box:hover{
-       background-color: #70c3a9;
-          transform: scale(1.05);
-      /* Add a glowing shadow effect */
-      box-shadow: 0 0 20px rgba(8, 23, 120, 0.6);
-    }
-     .complaints-box:hover{
-       background-color: #70c3a9;
-          transform: scale(1.05);
-      /* Add a glowing shadow effect */
-      box-shadow: 0 0 20px rgba(12, 25, 108, 0.6);
-    }
-    
+.navbar a:not(.login-btn):hover {
+    color: #ffffff;
+}
 
-    .form-box h2, .complaints-box h2 {
-      margin-bottom: 20px;
-    }
+/* Admin Login Button */
+.login-btn {
+    background-color: #ff9933; /* Saffron Button */
+    color: #ffffff !important;
+    padding: 9px 22px;
+    border-radius: 5px; /* Slightly sharp corners for professional look */
+    font-size: 14px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: 1px solid #e68a00;
+}
 
-    input, textarea, select, button {
-      background-color: #eef5f4;
-      width: 390px;
-      padding: 12px;
-      margin-top: 10px;
-      border-radius: 6px;
-      border: 2px solid #b11e1e;
-      font-size: 14px;
+.login-btn:hover {
+    background-color: #e68a00;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(230, 138, 0, 0.3);
+}
 
-       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow:L 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    textarea:hover{
-       background-color: #70c3a9;
-          transform: scale(1.05);
-      /* Add a glowing shadow effect */
-      box-shadow: 0 0 20px rgba(12, 25, 108, 0.6);
-    }
-    input:hover{
-      background-color: #70c3a9;
-          transform: scale(1.05);
-      /* Add a glowing shadow effect */
-      box-shadow: 0 0 20px rgba(12, 25, 108, 0.6);
-    }
-    select:hover{
-       background-color: #70c3a9;
-          transform: scale(1.05);
-      /* Add a glowing shadow effect */
-      box-shadow: 0 0 20px rgba(12, 25, 108, 0.6);
-    }
+/* --- Main Container --- */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 40px 5%;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-    button {
-      background-color: #0c6c50;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+/* --- Cards (Form & Complaints Box) --- */
+.form-box, .complaints-box {
+    background-color: #ffffff;
+    padding: 35px;
+    border-radius: 8px; /* Standard civic-tech border radius */
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 8px 24px rgba(10, 31, 68, 0.08); /* Deep blue tinted shadow */
+    border-top: 4px solid #14397d; /* Deep blue top border for structure */
+}
 
-    button:hover {
-      background-color: #70c3a9;
-          transform: scale(1.05);
-      /* Add a glowing shadow effect */
-      box-shadow: 0 0 20px rgba(12, 25, 108, 0.6);
-    }
+.form-box h2, .complaints-box h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 22px;
+    color: #0a1f44; /* Dark Navy Text */
+    border-bottom: 2px solid #edf2f7;
+    padding-bottom: 12px;
+    font-weight: 700;
+}
 
-    .complaint {
-      border-bottom: 1px solid #ddd;
-      padding: 10px 0;
-    }
+/* --- Form Elements --- */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
 
-    .complaint .tag {
-      display: inline-block;
-      background-color: #e0f2f1;
-      color: #00796b;
-      padding: 3px 10px;
-      border-radius: 12px;
-      font-size: 12px;
-      margin-bottom: 5px;
-    }
+label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: -6px;
+}
 
-    .login-btn {
-      background: none;
-      border: 2px solid white;
-      padding: 6px 14px;
-      border-radius: 6px;
-    }
+input, textarea, select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e0;
+    background-color: #f8fafc;
+    font-size: 15px;
+    font-family: inherit;
+    color: #2d3748;
+    transition: all 0.3s ease;
+}
 
-    
+textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+/* Readonly Input Styling (For Location) */
+input[readonly] {
+    background-color: #e2e8f0;
+    color: #718096;
+    cursor: not-allowed;
+    border-style: dashed;
+}
+
+/* Focus States */
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #14397d; /* Navy Focus */
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(20, 57, 125, 0.1);
+}
+
+/* Submit Button */
+button[type="submit"] {
+    background-color: #14397d; /* Deep Navy */
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+button[type="submit"]:hover {
+    background-color: #0a1f44;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(10, 31, 68, 0.3);
+}
+
+/* --- Recent Complaints Section --- */
+.complaints-box {
+    max-height: 650px;
+    overflow-y: auto;
+}
+
+/* Custom Scrollbar for complaints box */
+.complaints-box::-webkit-scrollbar {
+    width: 6px;
+}
+.complaints-box::-webkit-scrollbar-thumb {
+    background-color: #cbd5e0;
+    border-radius: 10px;
+}
+
+.complaint {
+    border-bottom: 1px solid #edf2f7;
+    padding: 20px 0;
+}
+
+.complaint:first-child {
+    padding-top: 0;
+}
+
+.complaint:last-child {
+    border-bottom: none;
+}
+
+.complaint .tag {
+    display: inline-block;
+    background-color: #fff3e0; /* Very light saffron background */
+    color: #e65100; /* Dark saffron text */
+    padding: 4px 10px;
+    border-radius: 4px; /* Square tags look more formal */
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    border: 1px solid #ffe0b2;
+}
+
+.complaint strong {
+    display: block;
+    color: #1a202c;
+    margin-bottom: 6px;
+    font-size: 16px;
+}
+
+.complaint p {
+    margin: 0 0 10px 0;
+    color: #4a5568;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.complaint small {
+    color: #718096;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

@@ -5,96 +5,140 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Login - SmartReport</title>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #e0f7fa, #80cbc4);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
-    .login-container {
-      background-color: rgb(128, 214, 231);
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      width: 100%;
-      max-width: 400px;
-      text-align: center;
-       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 2px 4px 6px rgba(49, 13, 156, 0.1);
-    }
-    .login-container:hover{
-       background-color: #70c3a9;
-          transform: scale(1.05);
-      /* Add a glowing shadow effect */
-      box-shadow: 0 0 20px rgba(8, 23, 120, 0.6);
-    }
+/* --- Global Reset & Animations --- */
+* {
+    box-sizing: border-box;
+}
 
-    h2 {
-      margin-bottom: 20px;
-      color: #004d40;
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-    input[type="email"],
-    input[type="password"] {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-    }
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+    background-color: #f0f4f8; /* Main page background se match karta hua */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
 
-    button {
-      width: 100%;
-      padding: 12px;
-      background-color: #8076d7;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 2px 4px 6px rgba(49, 13, 156, 0.1);
-    }
+/* --- 🌟 Premium Glass/Card Container --- */
+.login-container {
+    background-color: #ffffff;
+    padding: 50px 40px;
+    border-radius: 24px; /* Modern round corners */
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08); /* Deep soft shadow */
+    border: 1px solid #f1f5f9;
+    animation: slideUpFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; /* Smooth entry */
+}
 
-    button:hover {
-     background-color: #5f72c1;
-          transform: scale(1.05);
-      /* Add a glowing shadow effect */
-      box-shadow: 0 0 20px rgba(229, 15, 15, 0.6);
-    }
+h2 {
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: #0f172a;
+    font-weight: 800;
+    font-size: 28px;
+    letter-spacing: -0.5px;
+}
 
-    .error-message {
-      color: red;
-      margin-top: 10px;
-      display: none;
-    }
-     .link-container {
-      margin-top: 17px;
-      display: flex;
-      justify-content: space-between;
-    }
+/* --- Form Inputs (Clean & Bubbly) --- */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+    border-radius: 14px;
+    border: 2px solid #e2e8f0;
+    background-color: #f8fafc;
+    font-size: 15px;
+    font-family: inherit;
+    color: #1e293b;
+    transition: all 0.3s ease;
+}
 
-    .link-container a {
-      font-size: 17px;
-      color: #e3103e;
-      text-decoration: none;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 2px 4px 6px rgba(49, 13, 156, 0.1);
-    }
+/* Smooth Focus Glow */
+input[type="email"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+}
 
-    .link-container a:hover {
-      border-radius: 10px;
-       background-color: #707ec3;
-          transform: scale(1.05);
-      /* Add a glowing shadow effect */
-      box-shadow: 0 0 20px rgba(8, 23, 120, 0.6);
-    }
+/* --- 🌟 Primary Gradient Action Button --- */
+button {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%); /* Premium Indigo-Blue */
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
+}
+
+button:active {
+    transform: translateY(1px) scale(0.98); /* Tactile Click */
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+}
+
+/* --- Links (Forgot Password / Create Account) --- */
+.link-container {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link-container a {
+    font-size: 14px;
+    color: #64748b;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.link-container a:hover {
+    color: #3b82f6; /* Subtle hover color change, no crazy boxes */
+}
+
+/* --- Error Message Styling --- */
+.error-message {
+    background-color: #fef2f2; /* Soft red background */
+    color: #ef4444; /* Clean red text */
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 20px;
+    border: 1px solid #fecaca;
+    display: none; /* JS handle karega */
+}
   </style>
 </head>
 <body>
